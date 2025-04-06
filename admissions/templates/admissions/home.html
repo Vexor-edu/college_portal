@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to College Portal</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+    {% include 'admissions/header.html' %}
+    <script src="{% static 'js/home.js' %}"></script>
+
+
+    <div class="hero-section">
+        <h1>Welcome to Our College Admission Portal</h1>
+        <p>Shape your future with us. Apply now to begin your academic journey.</p>
+        <a href="{% url 'apply' %}" class="cta-btn">Apply Now</a>
+    </div>
+
+    <section class="features">
+        <div class="feature">
+            <h2>Explore Courses</h2>
+            <p>Wide range of programs in Science, Commerce, and Arts.</p>
+        </div>
+        <div class="feature">
+            <h2>Expert Faculty</h2>
+            <p>Learn from highly qualified and experienced faculty members.</p>
+        </div>
+        <div class="feature">
+            <h2>Student Dashboard</h2>
+            <p>Track your application, login securely, and print your form anytime.</p>
+        </div>
+    </section>
+
+    {% include 'admissions/footer.html' %}
+
+</body>
+</html>

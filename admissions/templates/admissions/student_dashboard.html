@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Application</title>
+    <link rel="stylesheet" href="{% static 'css/application_view.css' %}">
+</head>
+<body>
+    <div class="application-form">
+        <h2>🎓 Application Details</h2>
+        <p><strong>Name:</strong> {{ student.full_name }}</p>
+        <p><strong>Father's Name:</strong> {{ student.father_name }}</p>
+        <p><strong>DOB:</strong> {{ student.dob }}</p>
+        <p><strong>Email:</strong> {{ student.email }}</p>
+        <p><strong>Phone:</strong> {{ student.phone }}</p>
+        <p><strong>Address:</strong> {{ student.address }}</p>
+        <p><strong>Course:</strong> {{ student.get_course_display }}</p>
+        <p><strong>Photo:</strong><br> <img src="{{ student.photo.url }}"></p>
+        <p><strong>Signature:</strong><br> <img src="{{ student.signature.url }}"></p>
+        <button onclick="window.print()">🖨️ Print Application</button>
+    </div>
+</body>
+</html>

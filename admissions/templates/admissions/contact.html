@@ -1,0 +1,33 @@
+{% load static %}
+{% include 'admissions/header.html' %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+
+<section class="contact-section">
+    <h1>📞 Contact Information</h1>
+    
+    <div class="contact-grid">
+        <div class="contact-left">
+            <h2> Acharya Narendra Dev College</h2>
+            <p><strong>Principal:</strong> Prof Ravi Toteja</p>
+            <p><strong>Email:</strong> principal@andc.dc.ac.in</p>
+            <p><strong>Phone:</strong> 011-26293224</p>
+            <p><strong>Office Hours:</strong> 10 AM - 5 PM (Mon - Fri)</p>
+        </div>
+
+        <div class="contact-right">
+            <table class="contact-table">
+                <tr><th>Department</th><th>Contact</th></tr>
+                <tr><td>Admission Office</td><td>admissions@andc.du.ac.in</td></tr>
+                <tr><td>Accounts</td><td>accounts@andc.du.ac.in</td></tr>
+                <tr><td>Support</td><td>support@andc.du.ac.in</td></tr>
+                <tr><td>Placement Cell</td><td>placement@andc.du.ac.in</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="map-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.0112397807316!2d77.26162007581728!3d28.53938187571584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3dfd351e211%3A0xf522d7e9ce85de17!2sAcharya%20Narendra%20Dev%20College%20University%20Of%20Delhi.!5e0!3m2!1sen!2sin!4v1743921809270!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+
+{% include 'admissions/footer.html' %}

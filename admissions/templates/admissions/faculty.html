@@ -1,0 +1,25 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/faculty.css' %}">
+
+<div class="faculty-page">
+    <h1>Meet Our Faculty</h1>
+
+    {% for dept, members in departments.items %}
+        <div class="department-section">
+            <h2>{{ dept }}</h2>
+            <div class="faculty-grid">
+                {% for member in members %}
+                    <div class="faculty-card">
+                        <img src="{{ member.photo.url }}" alt="{{ member.name }}">
+                        <h3>{{ member.name }}</h3>
+                        <p><strong>Email:</strong> {{ member.email }}</p>
+                        <p><strong>Contact:</strong> {{ member.contact }}</p>
+                        <p class="dept-label">{{ member.department }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script src="{% static 'js/faculty.js' %}"></script>

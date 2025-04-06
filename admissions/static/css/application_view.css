@@ -1,0 +1,81 @@
+/* student_dashboard css after login 😁 */
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: #f5f7fa;
+    color: #2c3e50;
+    margin: 0;
+    padding: 30px 0;
+}
+
+.application-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 40px;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.application-form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #34495e;
+}
+
+.application-form p {
+    font-size: 16px;
+    margin: 12px 0;
+}
+
+.application-form strong {
+    color: #2c3e50;
+    width: 180px;
+    display: inline-block;
+}
+
+.application-form img {
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-height: 120px;
+}
+
+button {
+    margin-top: 30px;
+    padding: 12px 25px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2d7cbf;
+}
+
+/* Print Mode */
+@media print {
+    body {
+        background: none;
+        padding: 0;
+    }
+    .application-form {
+        box-shadow: none;
+        border: none;
+        width: 100%;
+    }
+    button {
+        display: none;
+    }
+}

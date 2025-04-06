@@ -1,0 +1,50 @@
+.contact-section {
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+}
+
+.contact-section h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #002244;
+}
+
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+}
+
+.contact-left, .contact-right {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-left p {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.contact-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.contact-table th, .contact-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    background-color: white;
+}
+
+.contact-table th {
+    background-color: #003366;
+    color: white;
+}
+
+.map-embed {
+    margin-top: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+}

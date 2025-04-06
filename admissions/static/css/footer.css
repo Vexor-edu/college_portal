@@ -1,0 +1,65 @@
+/* === FOOTER STYLES === */
+
+.site-footer {
+    background-color: #003366; /* Deep university blue */
+    color: #ffffff;
+    padding: 40px 20px 20px;
+    font-family: 'Segoe UI', sans-serif;
+    opacity: 0; /* Hidden by default for animation */
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.footer-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    gap: 20px;
+}
+
+.footer-column {
+    flex: 1 1 300px;
+    min-width: 280px;
+}
+
+.footer-column h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.footer-column p {
+    margin: 6px 0;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #ffffff55;
+    padding-top: 15px;
+    font-size: 14px;
+    color: #dddddd;
+}
+
+/* === MOBILE RESPONSIVENESS === */
+
+@media (max-width: 600px) {
+    .footer-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-column {
+        margin-bottom: 20px;
+    }
+}

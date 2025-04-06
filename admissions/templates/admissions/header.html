@@ -1,0 +1,47 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+<header class="site-header">
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="left-links">
+            <a href="#">Apply</a>
+            <a href="#">Visit</a>
+            <a href="#">Give</a>
+        </div>
+        <div class="right-contact">
+            <span>Email: principal@andc.du.ac.in</span>
+            <span>Helpline: 011-26293224</span>
+        </div>
+    </div>
+
+    <!-- Branding + Search -->
+    <div class="branding-area">
+        <div class="logo-box">
+            <img src="{% static 'img/andclogo.png' %}" alt="College Logo">
+            <h1>Acharya Narendra Dev College</h1>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button>🔍</button>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="/">🏠 Home</a></li>
+            <li><a href="{% url 'apply' %}">📄 Apply</a></li>
+            <li class="has-dropdown">
+                <a href="#">📚 Courses</a>
+                <ul class="dropdown">
+                    <li><a href="#">B.Tech</a></li>
+                    <li><a href="#">M.Tech</a></li>
+                    <li><a href="#">MBA</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'student_login' %}">🔑 Student Login</a></li>
+            <li><a href="{% url 'faculty' %}">👨‍🏫 Faculty</a></li>
+            <li><a href="{% url 'contact' %}">📞 Contact Us</a></li>
+        </ul>
+    </nav>
+</header>
