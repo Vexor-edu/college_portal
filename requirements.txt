@@ -1,0 +1,23 @@
+# Core dependencies
+Django>=4.2,<5.0
+pillow  # for image/file handling (photo, signature, documents)
+gunicorn  # for deployment (if using on a server)
+
+# Optional: for better form rendering & styling
+django-crispy-forms
+crispy-bootstrap5
+
+# For environment variable handling
+python-decouple
+
+# For static file handling during deployment
+whitenoise
+
+# If using PostgreSQL in production
+psycopg2-binary
+
+# Optional: For image compression or resizing
+django-imagekit
+
+# Optional: If using email-based login or email verification
+django-allauth
