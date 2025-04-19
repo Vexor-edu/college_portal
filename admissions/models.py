@@ -2,6 +2,11 @@ from django.db import models
 import uuid
 
 class StudentApplication(models.Model):
+    STATUS_CHOICES = (
+        ('pending', 'Pending'),
+        ('approved', 'Approved'),
+        ('rejected', 'Rejected'),
+    )
     full_name = models.CharField(max_length=100)
     father_name = models.CharField(max_length=100)
     dob = models.DateField()
@@ -19,11 +24,11 @@ class StudentApplication(models.Model):
     ('BSC', 'B.Sc.')]
 
     course = models.CharField(max_length=10, choices=COURSE_CHOICES)
-
     photo = models.ImageField(upload_to='photo/')
     document = models.FileField(upload_to='documents/')
     signature = models.ImageField(upload_to='signature/')
     submitted_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
 
 
     def save(self, *args, **kwargs):
