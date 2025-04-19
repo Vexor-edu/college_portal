@@ -6,18 +6,58 @@
     <link rel="stylesheet" href="{% static 'css/application_view.css' %}">
 </head>
 <body>
+    {% include 'admissions/header.html' %}
     <div class="application-form">
         <h2>🎓 Application Details</h2>
-        <p><strong>Name:</strong> {{ student.full_name }}</p>
-        <p><strong>Father's Name:</strong> {{ student.father_name }}</p>
-        <p><strong>DOB:</strong> {{ student.dob }}</p>
-        <p><strong>Email:</strong> {{ student.email }}</p>
-        <p><strong>Phone:</strong> {{ student.phone }}</p>
-        <p><strong>Address:</strong> {{ student.address }}</p>
-        <p><strong>Course:</strong> {{ student.get_course_display }}</p>
-        <p><strong>Photo:</strong><br> <img src="{{ student.photo.url }}"></p>
-        <p><strong>Signature:</strong><br> <img src="{{ student.signature.url }}"></p>
+
+        <!-- Flex container for name, photo, and signature -->
+        <div class="details-container">
+            <div class="left-column">
+                <p><strong>Student ID:</strong> {{ student.student_id }}</p>
+                <p><strong>Name:</strong> {{ student.full_name }}</p>
+                <p><strong>Father's Name:</strong> {{ student.father_name }}</p>
+                <p><strong>DOB:</strong> {{ student.dob }}</p>
+                <p><strong>Email:</strong> {{ student.email }}</p>
+                <p><strong>Phone:</strong> {{ student.phone }}</p>
+                <p><strong>Address:</strong> {{ student.address }}</p>
+                <p><strong>Course:</strong> {{ student.get_course_display }}</p>
+            </div>
+            
+            <div class="right-column">
+                <!-- Photo and Signature in the Right Column -->
+                <div>
+                    <strong>Photo:</strong><br>
+                    <img src="{{ student.photo.url }}" alt="Student Photo">
+                </div>
+                <div>
+                    <strong>Signature:</strong><br>
+                    <img src="{{ student.signature.url }}" alt="Student Signature">
+                </div>
+            </div>
+        </div>
+
+        <p><strong>Document:</strong><br>
+            <img src="{{ student.document.url }}" alt="Student Document">
+        </p>
+
         <button onclick="window.print()">🖨️ Print Application</button>
     </div>
+    <div id="datetime-footer"></div>
+
+    <script>
+    // JavaScript to get current date and time
+      const now = new Date();
+      const formattedDateTime = now.toLocaleString('en-IN', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+      document.getElementById('datetime-footer').innerText = `🕒 Printed on: ${formattedDateTime}`;
+   </script>
+
 </body>
 </html>

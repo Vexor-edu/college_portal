@@ -2,17 +2,35 @@ from django.shortcuts import render, redirect
 from .forms import StudentApplicationForm
 from django.contrib import messages
 from .models import FacultyMember, StudentApplication
+from django.contrib.auth.decorators import login_required
+from .forms import StudentLoginForm
+
+from django.shortcuts import get_object_or_404, render
+
+
+def admin_print_application(request, pk):
+    student = get_object_or_404(StudentApplication, pk=pk)
+    return render(request, 'admissions/admin_print_application.html', {'student': student})
 
 
 def student_login(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        dob = request.POST.get('dob')  # Assume date input
+        email = request.POST.get('email', '').strip()
+        student_id = request.POST.get('student_id', '').strip()
+        dob = request.POST.get('dob', '').strip()
 
         try:
-            student = StudentApplication.objects.get(email=email, dob=dob)
-            request.session['student_id'] = student.id
+            if email:
+                student = StudentApplication.objects.get(email=email, dob=dob)
+            elif student_id:
+                student = StudentApplication.objects.get(student_id=student_id, dob=dob)
+            else:
+                messages.error(request, "Please enter either your Email or Student ID with DOB.")
+                return render(request, 'admissions/login.html')
+
+            request.session['student_id'] = student.student_id
             return redirect('student_dashboard')
+
         except StudentApplication.DoesNotExist:
             messages.error(request, "Invalid credentials. Please try again.")
 
@@ -24,8 +42,9 @@ def student_dashboard(request):
     if not student_id:
         return redirect('student_login')
 
-    student = StudentApplication.objects.get(id=student_id)
+    student = StudentApplication.objects.get(student_id=student_id)
     return render(request, 'admissions/student_dashboard.html', {'student': student})
+
 
 
 
@@ -65,3 +84,9 @@ def faculty_page(request):
     return render(request, 'admissions/faculty.html', {'departments': departments})
 
 
+def student_logout(request):
+    try:
+        del request.session['student_id']
+    except KeyError:
+        pass
+    return redirect('student_login')

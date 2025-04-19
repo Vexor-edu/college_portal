@@ -1,40 +1,78 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Student Login</title>
-  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <link rel="stylesheet" href="{% static 'css/hlo.css' %}">
+  <style>
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
 
-  <div class="login-container">
-    <h2>🎓 Student Login</h2>
+<div class="login-container">
+  <ul>
+    <li><a href="/">🏠 Home</a></li> </ul>
+  <h2>🎓 Student Login</h2>
 
-    <form method="post">
-      {% csrf_token %}
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" name="email" class="form-control" required>
-      </div>
+  <!-- Toggle between login methods -->
+  <label><input type="radio" name="login_type" value="email" checked onchange="toggleLogin(this)"> Login with Email</label>
+  <label><input type="radio" name="login_type" value="student_id" onchange="toggleLogin(this)"> Login with Student ID</label>
 
-      <div class="form-group">
-        <label for="dob">Date of Birth:</label>
-        <input type="date" name="dob" class="form-control" required>
-      </div>
+  <form method="post">
+    {% csrf_token %}
+    
+    <div id="email-login" class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" name="email" class="form-control">
+    </div>
 
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+    <div id="id-login" class="form-group hidden">
+      <label for="student_id">Student ID:</label>
+      <input type="text" name="student_id" class="form-control">
+    </div>
 
-    {% if messages %}
-      <div class="messages">
-        {% for message in messages %}
-          {{ message }}
-        {% endfor %}
-      </div>
-    {% endif %}
-  </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth:</label>
+      <input type="date" name="dob" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+
+  {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+        <p style="color: red;">{{ message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  function toggleLogin(radio) {
+    const emailLogin = document.getElementById("email-login");
+    const idLogin = document.getElementById("id-login");
+
+    if (radio.value === "email") {
+      emailLogin.classList.remove("hidden");
+      idLogin.classList.add("hidden");
+    } else {
+      emailLogin.classList.add("hidden");
+      idLogin.classList.remove("hidden");
+    }
+  }
+
+  // Trigger toggle on load (in case form is reloaded with error)
+  document.addEventListener('DOMContentLoaded', () => {
+    const selected = document.querySelector('input[name="login_type"]:checked');
+    if (selected) {
+      toggleLogin(selected);
+    }
+  });
+</script>
+<div style="clear: both;"></div>
 
 </body>
 </html>

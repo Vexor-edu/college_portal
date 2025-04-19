@@ -9,6 +9,30 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mapping: field_id -> disclaimer text
+            const disclaimers = {
+                'id_photo': '📸 Photo: JPG/PNG only, Max 2MB, Recommended size 600x600px',
+                'id_signature': '✍️ Signature: JPG/PNG only, Max 1MB, Recommended size 400x200px',
+                'id_document': '📄 Document: PDF only, Max 5MB'
+            };
+        
+            Object.entries(disclaimers).forEach(([fieldId, text]) => {
+                const field = document.getElementById(fieldId);
+                if (field) {
+                    const disclaimer = document.createElement('small');
+                    disclaimer.className = 'form-text text-muted';
+                    disclaimer.innerText = text;
+        
+                    // Insert right after the input field
+                    field.parentNode.insertBefore(disclaimer, field.nextSibling);
+                }
+            });
+        });
+        </script>
+        
 
     <div class="container">
         <h1>Student Admission Form</h1>

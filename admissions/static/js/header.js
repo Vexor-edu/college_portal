@@ -1,4 +1,4 @@
-window.addEventListener('scroll', function () {
-    const header = document.querySelector('.site-header');
-    header.classList.toggle('sticky', window.scrollY > 0);
+document.addEventListener('DOMContentLoaded', function () {
+    // For future JS logic like mobile menu toggle
+    console.log("Header JS loaded!");
 });

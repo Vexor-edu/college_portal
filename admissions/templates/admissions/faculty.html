@@ -5,7 +5,8 @@
     <h1>Meet Our Faculty</h1>
 
     {% for dept, members in departments.items %}
-        <div class="department-section">
+        <div class="department_section">
+            <h2 class="dept-title">{{ dept }}</h2>
             <h2>{{ dept }}</h2>
             <div class="faculty-grid">
                 {% for member in members %}
