@@ -90,3 +90,7 @@ def student_logout(request):
     except KeyError:
         pass
     return redirect('student_login')
+    from django.shortcuts import render
+
+def admission_form(request):
+    return render(request, 'admission_form.html')
