@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: college-portal
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn college_portal.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: college_portal.settings
+      - key: PYTHON_VERSION
+        value: 3.10
+
